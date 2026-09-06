@@ -534,6 +534,229 @@
         html.light .empty-project-icon svg { color: rgba(0,0,0,0.25) !important; }
         html.light .empty-project-txt { color: rgba(0,0,0,0.35) !important; }
         html.light .empty-project-sub { color: rgba(0,0,0,0.22) !important; }
+
+
+        /* ─────────────────────────────────────────────
+           STORY / PROCESS CARDS
+           Shared visual language for the narrative sections.
+        ───────────────────────────────────────────── */
+        .story-card {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.06);
+            background: linear-gradient(180deg, rgba(255,255,255,0.028), rgba(255,255,255,0.012));
+            border-radius: 1.5rem;
+            transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+        }
+        .story-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 85% 15%, rgba(16,185,129,0.10), transparent 34%);
+            opacity: 0;
+            transition: opacity 0.35s ease;
+            pointer-events: none;
+        }
+        .story-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(16,185,129,0.22);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.22), 0 0 30px rgba(16,185,129,0.06);
+        }
+        .story-card:hover::before { opacity: 1; }
+
+        .story-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 0.75rem;
+            border: 1px solid rgba(16,185,129,0.18);
+            background: rgba(16,185,129,0.08);
+            color: #34d399;
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+        }
+
+        .journey-card { min-height: 17rem; }
+        .journey-card .story-watermark {
+            position: absolute;
+            right: -0.25rem;
+            bottom: -1rem;
+            font-size: 7rem;
+            line-height: 1;
+            font-weight: 800;
+            letter-spacing: -0.08em;
+            color: rgba(255,255,255,0.025);
+            user-select: none;
+            pointer-events: none;
+        }
+
+        .build-card {
+            min-height: 18rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .build-icon {
+            width: 3rem;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 1rem;
+            border: 1px solid rgba(16,185,129,0.15);
+            background: rgba(16,185,129,0.06);
+            color: #34d399;
+        }
+
+        .process-wrap {
+            position: relative;
+        }
+        .process-line {
+            position: absolute;
+            top: 1.65rem;
+            left: 7%;
+            right: 7%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(16,185,129,0.18), rgba(16,185,129,0.18), transparent);
+        }
+        .process-card {
+            position: relative;
+            min-height: 13rem;
+            padding: 1.5rem;
+            border-radius: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.06);
+            background: rgba(255,255,255,0.018);
+            transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+        }
+        .process-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(16,185,129,0.22);
+            background: rgba(16,185,129,0.025);
+        }
+        .process-dot {
+            position: relative;
+            z-index: 2;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0d0d0d;
+            border: 1px solid rgba(16,185,129,0.35);
+            color: #34d399;
+            font-size: 0.7rem;
+            font-weight: 800;
+            box-shadow: 0 0 0 6px rgba(16,185,129,0.035);
+        }
+
+        .explore-panel {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 1.75rem;
+            background: linear-gradient(135deg, rgba(255,255,255,0.026), rgba(16,185,129,0.025));
+        }
+        .explore-panel::after {
+            content: '';
+            position: absolute;
+            width: 18rem;
+            height: 18rem;
+            right: -7rem;
+            top: -8rem;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(16,185,129,0.10), transparent 68%);
+            pointer-events: none;
+        }
+        .explore-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0.7rem 0.9rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(255,255,255,0.07);
+            background: rgba(255,255,255,0.025);
+            color: rgba(255,255,255,0.62);
+            font-size: 0.78rem;
+            line-height: 1.1;
+            transition: all 0.3s ease;
+        }
+        .explore-chip::before {
+            content: '';
+            width: 0.36rem;
+            height: 0.36rem;
+            border-radius: 9999px;
+            background: #34d399;
+            box-shadow: 0 0 10px rgba(52,211,153,0.35);
+        }
+        .explore-chip:hover {
+            color: rgba(255,255,255,0.9);
+            border-color: rgba(16,185,129,0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Currently Exploring — bright mode counterpart */
+        html.light .explore-panel {
+            border-color: rgba(13,13,13,0.08);
+            background: linear-gradient(
+                135deg,
+                rgba(255,255,255,0.78),
+                rgba(16,185,129,0.06)
+            );
+            box-shadow:
+                0 18px 50px rgba(13,13,13,0.06),
+                inset 0 1px 0 rgba(255,255,255,0.72);
+        }
+
+        html.light .explore-panel::after {
+            background: radial-gradient(
+                circle,
+                rgba(16,185,129,0.13),
+                transparent 68%
+            );
+        }
+
+        html.light .explore-panel h3 {
+            color: #0d0d0d !important;
+        }
+
+        html.light .explore-panel p {
+            color: rgba(13,13,13,0.52) !important;
+        }
+
+        html.light .explore-panel .text-emerald-400 {
+            color: #059669 !important;
+        }
+
+        html.light .explore-chip {
+            border-color: rgba(13,13,13,0.08);
+            background: rgba(255,255,255,0.62);
+            color: rgba(13,13,13,0.58);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
+        }
+
+        html.light .explore-chip:hover {
+            color: rgba(13,13,13,0.88);
+            border-color: rgba(16,185,129,0.28);
+            background: rgba(16,185,129,0.07);
+            box-shadow: 0 8px 20px rgba(13,13,13,0.05);
+        }
+
+        .section-anchor { scroll-margin-top: 8rem; }
+
+        @media (max-width: 767px) {
+            .process-line { display: none; }
+            .process-card { min-height: auto; }
+            .journey-card, .build-card { min-height: auto; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .story-card, .process-card, .explore-chip { transition: none; }
+        }
+
     </style>
 </head>
 
@@ -554,18 +777,20 @@
     {{-- fixed: navbar selalu menempel di atas layar saat scroll --}}
     {{-- z-50: pastikan navbar berada di lapisan paling atas --}}
     <header class="fixed top-0 inset-x-0 z-50 flex flex-col items-center pt-5 px-4">
-        <nav class="glass-nav rounded-full px-5 md:px-6 py-3 flex items-center justify-between w-full max-w-3xl">
+        <nav class="glass-nav rounded-full px-5 md:px-6 py-3 flex items-center justify-between w-full max-w-4xl">
             {{-- Logo: teks "Putra" putih dan "Dev." dengan gradasi hijau --}}
             <a href="#" class="text-white font-extrabold text-lg tracking-tight whitespace-nowrap select-none">
                 Putra<span class="gradient-text">Dev.</span>
             </a>
 
             {{-- Menu navigasi desktop: disembunyikan di mobile (hidden), ditampilkan di md ke atas --}}
-            <ul class="hidden md:flex items-center gap-6 lg:gap-7 font-medium">
+            <ul class="hidden md:flex items-center gap-4 lg:gap-5 font-medium">
                 <li><a href="#" class="nav-link">Home</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#project" class="nav-link">Project</a></li>
+                <li><a href="#journey" class="nav-link">Journey</a></li>
+                <li><a href="#build" class="nav-link">Build</a></li>
+                <li><a href="#skills" class="nav-link">Stack</a></li>
+                <li><a href="#project" class="nav-link">Work</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
 
@@ -602,8 +827,10 @@
         <div id="mobileMenu" class="mobile-menu glass-nav rounded-2xl mt-2 w-full max-w-3xl px-6 md:hidden">
             <a href="#">Home</a>
             <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#project">Project</a>
+            <a href="#journey">Journey</a>
+            <a href="#build">Build</a>
+            <a href="#skills">Stack</a>
+            <a href="#project">Work</a>
             <a href="#contact">Contact</a>
         </div>
     </header>
@@ -618,16 +845,16 @@
         {{-- Badge status ketersediaan dengan titik hijau berkedip --}}
         <div class="fade-up delay-1 inline-flex items-center gap-2.5 mb-8 rounded-full px-4 py-2 w-fit">
             <span class="dot-pulse"></span>
-            <span class="text-xs font-semibold tracking-[0.18em] uppercase text-white/50">Available for work</span>
+            <span class="text-xs font-semibold tracking-[0.18em] uppercase text-white/50">Open to opportunities</span>
         </div>
 
         {{-- Judul utama hero --}}
         {{-- clamp(): ukuran font responsif dengan nilai minimum, ideal, dan maksimum --}}
         <h1 class="fade-up delay-2 font-extrabold leading-[1.06] tracking-tight max-w-4xl">
-            <span class="block text-[clamp(2.4rem,6.5vw,3.2rem)] text-white">Building sustainable and</span>
+            <span class="block text-[clamp(2.4rem,6.5vw,3.2rem)] text-white">I build digital products</span>
             <span class="block text-[clamp(2.4rem,6.5vw,3.2rem)]">
-                <span class="gradient-text">impactful digital</span>
-                <span class="text-white"> solutions.</span>
+                <span class="gradient-text">with curiosity, code,</span>
+                <span class="text-white"> and AI.</span>
             </span>
         </h1>
 
@@ -640,10 +867,10 @@
         <div class="fade-up delay-3 mt-7 max-w-xl"
              x-data="{
                  sentences: [
-                     'Informatics Engineering student and Fullstack Developer focused on building clean, performant, and user-centered web applications.',
-                     'I turn complex problems into elegant digital experiences that make a real impact.',
-                     'Passionate about crafting scalable backend systems with Laravel and modern frontend interfaces.',
-                     'Currently exploring the intersection of clean code, great design, and seamless user experience.'
+                     'A developer from Banjarmasin who learns by building real things.',
+                     'I turn ideas, problems, and experiments into working web experiences.',
+                     'My current home base: Laravel, modern frontend, UI/UX, and AI-assisted workflows.',
+                     'Still learning. Still building. Always looking for the next thing to improve.'
                  ],
                  sentenceIndex: 0,  /* Indeks kalimat yang sedang aktif */
                  charIndex: 0,      /* Posisi karakter saat ini */
@@ -685,13 +912,13 @@
         <div class="fade-up delay-4 flex flex-wrap items-center gap-4 mt-10">
             <a href="#project" class="btn-cta font-bold px-7 py-3.5 rounded-full text-sm tracking-wide">View My Work</a>
             {{-- Tautan ke halaman personal dengan ikon chevron --}}
-            <a href="/personal" class="group flex items-center gap-2.5 text-sm font-medium text-white/50 hover:text-white transition-colors duration-300">
+            <a href="#journey" class="group flex items-center gap-2.5 text-sm font-medium text-white/50 hover:text-white transition-colors duration-300">
                 <span class="flex items-center justify-center w-9 h-9 rounded-full border border-white/10 group-hover:border-white/25 transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
                     </svg>
                 </span>
-                Learn more about me
+                Explore my journey
             </a>
         </div>
 
@@ -700,36 +927,28 @@
             <div class="marquee-mask"> {{-- Fade di tepi kiri dan kanan agar transisi terlihat halus --}}
                 <div class="marquee-track"> {{-- Bergerak ke kiri terus-menerus dengan animasi CSS --}}
                     @php
-                    /* Array berisi 28 teknologi yang ditampilkan pada marquee */
+                    /* Array berisi 20 teknologi yang ditampilkan pada marquee */
                     $marqueeSkills = [
                         ['name' => 'HTML',       'img' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg'],
                         ['name' => 'CSS',        'img' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg'],
                         ['name' => 'JavaScript', 'img' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg'],
-                        ['name' => 'TypeScript', 'img' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg'],
+                        ['name' => 'Tailwind CSS','img' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg'],
+                        ['name' => 'Bootstrap',  'img' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg'],
+                        ['name' => 'Alpine.js',   'img' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/alpinejs/alpinejs-original.svg'],
                         ['name' => 'PHP',        'img' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg'],
                         ['name' => 'Laravel',    'img' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg'],
-                        ['name' => 'Bootstrap',  'img' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg'],
-                        ['name' => 'Tailwind',   'img' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg'],
-                        ['name' => 'React',      'img' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg'],
-                        ['name' => 'Vue.js',     'img' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg'],
-                        ['name' => 'Next.js',    'img' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg'],
-                        ['name' => 'Python',     'img' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg'],
-                        ['name' => 'Java',       'img' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg'],
-                        ['name' => 'Go',         'img' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original-wordmark.svg'],
-                        ['name' => 'Rust',       'img' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-original.svg'],
-                        ['name' => 'Flutter',    'img' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg'],
-                        ['name' => 'Node.js',    'img' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg'],
                         ['name' => 'MySQL',      'img' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg'],
-                        ['name' => 'PostgreSQL', 'img' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg'],
-                        ['name' => 'MongoDB',    'img' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg'],
-                        ['name' => 'Docker',     'img' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg'],
+                        ['name' => 'Node.js',    'img' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg'],
+                        ['name' => 'Vite',       'img' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg'],
                         ['name' => 'Figma',      'img' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg'],
                         ['name' => 'VS Code',    'img' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg'],
                         ['name' => 'Git',        'img' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg'],
+                        ['name' => 'GitHub',     'img' => 'https://unpkg.com/@lobehub/icons-static-svg@latest/icons/github.svg'],
                         ['name' => 'Linux',      'img' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg'],
-                        ['name' => 'Swift',      'img' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg'],
-                        ['name' => 'Kotlin',     'img' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg'],
-                        ['name' => 'Redis',      'img' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg'],
+                        ['name' => 'GPT',        'img' => 'https://unpkg.com/@lobehub/icons-static-svg@latest/icons/openai.svg'],
+                        ['name' => 'Claude',     'img' => 'https://unpkg.com/@lobehub/icons-static-svg@latest/icons/claude-color.svg'],
+                        ['name' => 'Gemini',     'img' => 'https://unpkg.com/@lobehub/icons-static-svg@latest/icons/gemini-color.svg'],
+                        ['name' => 'Z.ai',       'img' => 'https://unpkg.com/@lobehub/icons-static-svg@latest/icons/zhipu-color.svg'],
                     ];
                     @endphp
 
@@ -759,11 +978,11 @@
 
         {{-- ═══════════ ABOUT SECTION ═══════════ --}}
         {{-- Elemen section kosong sebagai anchor target untuk scroll navigasi --}}
-        <section id="about"></section>
+        <section id="about" class="section-anchor"></section>
         {{-- reveal: elemen ini tersembunyi sampai di-scroll ke area pandang --}}
         <div class="section-header mt-22 reveal">
             <p class="eyebrow-line">About me</p>
-            <h2 class="section-title"><span class="shimmer-underline">Storyteller & Developer</span></h2>
+            <h2 class="section-title"><span class="shimmer-underline">More Than Just Code</span></h2>
         </div>
 
         {{-- Kartu about, muncul dengan efek zoom saat di-scroll --}}
@@ -778,36 +997,37 @@
                     {{-- Glow hijau di belakang foto, makin terang saat hover --}}
                     <div class="absolute inset-0 bg-emerald-500/20 blur-2xl rounded-2xl group-hover:bg-emerald-500/30 transition-colors duration-500 scale-90"></div>
                     {{-- asset() menghasilkan URL lengkap ke file di folder public --}}
-                    <img src="{{ asset('images/portofolio.webp') }}" alt="Muhammad Putra"
+                    <img src="{{ asset('images/portofolio.png') }}" alt="Muhammad Putra"
                          class="relative w-full max-w-xs mx-auto md:max-w-none h-auto rounded-2xl border border-white/10 object-cover shadow-2xl">
                 </div>
 
                 <div class="w-full md:w-3/5">
-                    <h2 class="text-4xl md:text-3xl font-extrabold tracking-tight mb-10">
-                        Haloo, I'm <span class="gradient-text">Muhammad Putra</span>.
+                    <h2 class="text-4xl md:text-3xl font-extrabold tracking-tight mb-8">
+                        Hi, I'm <span class="gradient-text">Muhammad Putra</span>.
                     </h2>
-                    <p class="text-white/50 leading-relaxed text-base mb-7">
-                        Siswa kelas 12 PPLG di SMKN 2 Banjarmasin yang fokus pada Full-Stack Web Development dan UI/UX Design menggunakan Figma. Saya terbiasa membangun aplikasi web modern yang cepat, responsif, dan fungsional.
-                        Dalam proses development, saya aktif memanfaatkan teknologi AI (seperti ChatGPT, Gemini, Claude, dan Z.ai) untuk mempercepat penulisan kode, debugging, serta meningkatkan efisiensi kerja secara keseluruhan.
-                    </p>
-            
-                    {{-- Baris statistik: FullStack, Indonesia, dan pengalaman --}}
+                    <div class="space-y-5 text-white/50 leading-relaxed text-base mb-9 font-light">
+                        <p>
+                            Saya belajar development dengan satu kebiasaan sederhana: <span class="text-white/80 font-medium">build first, learn from the problem.</span> Saya lebih suka memahami sebuah teknologi lewat sesuatu yang benar-benar dibuat dan diuji daripada sekadar menghafal teorinya.
+                        </p>
+                        <p>
+                            Perjalanan saya berkembang dari frontend dan UI/UX menuju full-stack development dengan Laravel, database, authentication, dashboard, dan sistem web yang lebih nyata. Di saat yang sama, AI menjadi bagian dari workflow saya untuk brainstorming, debugging, riset, dan mempercepat proses tanpa mengambil alih proses berpikir.
+                        </p>
+                    </div>
+
                     <div class="flex flex-wrap items-center gap-6 sm:gap-8">
                         <div class="stat-glow">
-                            <p class="text-3xl font-extrabold text-white"><span class="gradient-text">Front</span>-End</p>
-                            <p class="text-[0.68rem] text-white/35 mt-1.5 tracking-[0.14em] uppercase font-medium">Developer</p>
-                        </div>
-                        {{-- Garis pemisah vertikal, disembunyikan di mobile --}}
-                        <div class="stat-divider hidden sm:block"></div>
-                        <div class="stat-glow">
-                            <p class="text-3xl font-extrabold text-white">Indo<span class="danger-text">nesia</span></p>
-                            <p class="text-[0.68rem] text-white/35 mt-1.5 tracking-[0.14em] uppercase font-medium">Banjarmasin</p>
+                            <p class="text-3xl font-extrabold text-white"><span class="gradient-text">Web</span></p>
+                            <p class="text-[0.68rem] text-white/35 mt-1.5 tracking-[0.14em] uppercase font-medium">Focus</p>
                         </div>
                         <div class="stat-divider hidden sm:block"></div>
-                        {{-- data-count dan data-suffix dibaca JavaScript untuk animasi counter dari 0 ke angka target --}}
                         <div class="stat-glow">
-                            <p class="text-3xl font-extrabold text-white" data-count="1" data-suffix="+">0+</p>
-                            <p class="text-[0.68rem] text-white/35 mt-1.5 tracking-[0.14em] uppercase font-medium">Tahun Pengalaman</p>
+                            <p class="text-3xl font-extrabold text-white">Banjarmasin</p>
+                            <p class="text-[0.68rem] text-white/35 mt-1.5 tracking-[0.14em] uppercase font-medium">Based in</p>
+                        </div>
+                        <div class="stat-divider hidden sm:block"></div>
+                        <div class="stat-glow">
+                            <p class="text-3xl font-extrabold text-white"><span class="gradient-text">Build-first</span></p>
+                            <p class="text-[0.68rem] text-white/35 mt-1.5 tracking-[0.14em] uppercase font-medium">Approach</p>
                         </div>
                     </div>
                 </div>
@@ -815,12 +1035,151 @@
         </div>
     </main>
 
+    {{-- ═══════════ JOURNEY SECTION ═══════════ --}}
+    <section id="journey" class="section-anchor relative z-10 py-22 px-6 md:px-16 lg:px-28">
+        <div class="section-header mb-14 reveal">
+            <p class="eyebrow-line">My Journey</p>
+            <h2 class="section-title"><span class="shimmer-underline">Still Becoming</span></h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <article class="story-card journey-card reveal-left p-7 md:p-8">
+                <div class="relative z-10">
+                    <div class="flex items-center justify-between mb-7">
+                        <span class="text-[0.68rem] font-semibold tracking-[0.2em] uppercase text-emerald-400">Curiosity</span>
+                        <span class="story-number">01</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white tracking-tight mb-3">Started by exploring.</h3>
+                    <p class="text-sm md:text-[0.92rem] text-white/40 leading-relaxed max-w-lg">
+                        I started by wanting to understand how websites actually work — from the interface people see to the code and systems behind it.
+                    </p>
+                </div>
+                <span class="story-watermark">01</span>
+            </article>
+
+            <article class="story-card journey-card reveal p-7 md:p-8">
+                <div class="relative z-10">
+                    <div class="flex items-center justify-between mb-7">
+                        <span class="text-[0.68rem] font-semibold tracking-[0.2em] uppercase text-emerald-400">Building</span>
+                        <span class="story-number">02</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white tracking-tight mb-3">Learned through projects.</h3>
+                    <p class="text-sm md:text-[0.92rem] text-white/40 leading-relaxed max-w-lg">
+                        Frontend, UI/UX, Laravel, databases, authentication, dashboards, and debugging became lessons learned by actually making things.
+                    </p>
+                </div>
+                <span class="story-watermark">02</span>
+            </article>
+
+            <article class="story-card journey-card reveal-left p-7 md:p-8">
+                <div class="relative z-10">
+                    <div class="flex items-center justify-between mb-7">
+                        <span class="text-[0.68rem] font-semibold tracking-[0.2em] uppercase text-emerald-400">Shipping</span>
+                        <span class="story-number">03</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white tracking-tight mb-3">Ideas became systems.</h3>
+                    <p class="text-sm md:text-[0.92rem] text-white/40 leading-relaxed max-w-lg">
+                        The goal shifted from making something look good to making it useful, maintainable, connected, and ready to be used.
+                    </p>
+                </div>
+                <span class="story-watermark">03</span>
+            </article>
+
+            <article class="story-card journey-card reveal-right p-7 md:p-8">
+                <div class="relative z-10">
+                    <div class="flex items-center justify-between mb-7">
+                        <span class="text-[0.68rem] font-semibold tracking-[0.2em] uppercase text-emerald-400">Exploring</span>
+                        <span class="story-number">04</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white tracking-tight mb-3">Building with AI.</h3>
+                    <p class="text-sm md:text-[0.92rem] text-white/40 leading-relaxed max-w-lg">
+                        AI is now part of my workflow for research, brainstorming, debugging, and faster iteration — while direction and final decisions stay human.
+                    </p>
+                </div>
+                <span class="story-watermark">04</span>
+            </article>
+        </div>
+
+        <div class="reveal mt-5 rounded-2xl border border-white/[0.06] bg-white/[0.018] px-6 py-5 text-center">
+            <p class="text-sm md:text-base font-medium text-white/55">
+                “The goal isn’t to know everything. It’s to keep getting better at building.”
+            </p>
+        </div>
+    </section>
+
+    {{-- ═══════════ WHAT I BUILD SECTION ═══════════ --}}
+    <section id="build" class="section-anchor relative z-10 py-22 px-6 md:px-16 lg:px-28">
+        <div class="section-header mb-14 reveal">
+            <p class="eyebrow-line">What I Build</p>
+            <h2 class="section-title"><span class="shimmer-underline">From Idea to Interface</span></h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <article class="story-card build-card reveal-left p-7 md:p-8">
+                <div>
+                    <div class="build-icon mb-7">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/>
+                        </svg>
+                    </div>
+                    <div class="text-[0.68rem] font-semibold tracking-[0.2em] uppercase text-emerald-400 mb-2">01 · Product</div>
+                    <h3 class="text-2xl font-bold text-white tracking-tight mb-3">Web Applications</h3>
+                    <p class="text-sm text-white/40 leading-relaxed">
+                        Responsive interfaces and functional experiences built around real users, not just screenshots.
+                    </p>
+                </div>
+                <div class="pt-7 mt-7 border-t border-white/[0.06] flex flex-wrap gap-2">
+                    <span class="text-[0.7rem] text-white/35 border border-white/[0.07] rounded-full px-3 py-1.5">Responsive UI</span>
+                    <span class="text-[0.7rem] text-white/35 border border-white/[0.07] rounded-full px-3 py-1.5">Interaction</span>
+                </div>
+            </article>
+
+            <article class="story-card build-card reveal p-7 md:p-8">
+                <div>
+                    <div class="build-icon mb-7">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                            <ellipse cx="12" cy="5" rx="7" ry="3"/><path d="M5 5v7c0 1.66 3.13 3 7 3s7-1.34 7-3V5M5 12v7c0 1.66 3.13 3 7 3s7-1.34 7-3v-7"/>
+                        </svg>
+                    </div>
+                    <div class="text-[0.68rem] font-semibold tracking-[0.2em] uppercase text-emerald-400 mb-2">02 · Systems</div>
+                    <h3 class="text-2xl font-bold text-white tracking-tight mb-3">Full-Stack Systems</h3>
+                    <p class="text-sm text-white/40 leading-relaxed">
+                        Backend logic, databases, authentication, dashboards, and the frontend pieces that make a product work end to end.
+                    </p>
+                </div>
+                <div class="pt-7 mt-7 border-t border-white/[0.06] flex flex-wrap gap-2">
+                    <span class="text-[0.7rem] text-white/35 border border-white/[0.07] rounded-full px-3 py-1.5">Laravel</span>
+                    <span class="text-[0.7rem] text-white/35 border border-white/[0.07] rounded-full px-3 py-1.5">MySQL</span>
+                </div>
+            </article>
+
+            <article class="story-card build-card reveal-right p-7 md:p-8">
+                <div>
+                    <div class="build-icon mb-7">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="8"/><path d="M8.5 12h7M12 8.5v7"/>
+                        </svg>
+                    </div>
+                    <div class="text-[0.68rem] font-semibold tracking-[0.2em] uppercase text-emerald-400 mb-2">03 · Experience</div>
+                    <h3 class="text-2xl font-bold text-white tracking-tight mb-3">Digital Experiences</h3>
+                    <p class="text-sm text-white/40 leading-relaxed">
+                        UI/UX decisions that aim for clarity, consistency, and a product that feels intentional from first click to last.
+                    </p>
+                </div>
+                <div class="pt-7 mt-7 border-t border-white/[0.06] flex flex-wrap gap-2">
+                    <span class="text-[0.7rem] text-white/35 border border-white/[0.07] rounded-full px-3 py-1.5">UI/UX</span>
+                    <span class="text-[0.7rem] text-white/35 border border-white/[0.07] rounded-full px-3 py-1.5">Figma</span>
+                </div>
+            </article>
+        </div>
+    </section>
+
     {{-- ═══════════ SKILLS SECTION ═══════════ --}}
     {{-- x-data="techStackFilter()": inisialisasi komponen Alpine untuk filter tab --}}
-    <section id="skills" class="relative z-10 py-22 px-6 md:px-16 lg:px-28" x-data="techStackFilter()">
+    <section id="skills" class="section-anchor relative z-10 py-22 px-6 md:px-16 lg:px-28" x-data="techStackFilter()">
         <div class="section-header mb-12 reveal">
             <p class="eyebrow-line">What I Use</p>
-            <h2 class="section-title"><span class="shimmer-underline">Tech Stack</span></h2>
+            <h2 class="section-title"><span class="shimmer-underline">Tools Behind the Work</span></h2>
         </div>
 
         {{-- Tombol-tombol filter tab --}}
@@ -857,16 +1216,16 @@
                         <span class="text-sm font-semibold text-white/70 group-hover:text-white transition-colors duration-300" x-text="skill.name"></span>
                     </div>
                     {{-- Badge "Advanced" dengan warna hijau --}}
-                    <span x-show="skill.level === 'Advanced'" class="text-[0.65rem] font-semibold tracking-wider uppercase px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/15" x-text="skill.level"></span>
+                    <span x-show="skill.level === 'Core' || skill.level === 'Workflow'" class="text-[0.65rem] font-semibold tracking-wider uppercase px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/15" x-text="skill.level"></span>
                     {{-- Badge level lain dengan warna abu, x-cloak menyembunyikan sampai Alpine siap --}}
-                    <span x-show="skill.level !== 'Advanced'" x-cloak class="text-[0.65rem] font-semibold tracking-wider uppercase px-2.5 py-1 rounded-full bg-white/[0.05] text-white/40 border border-white/[0.08]" x-text="skill.level"></span>
+                    <span x-show="skill.level !== 'Core' && skill.level !== 'Workflow'" x-cloak class="text-[0.65rem] font-semibold tracking-wider uppercase px-2.5 py-1 rounded-full bg-white/[0.05] text-white/40 border border-white/[0.08]" x-text="skill.level"></span>
                 </div>
             </template>
         </div>
     </section>
 
     {{-- ═══════════ PROJECTS SECTION ═══════════ --}}
-    <section id="project" class="relative z-10 py-22 px-6 md:px-16 lg:px-28">
+    <section id="project" class="section-anchor relative z-10 py-22 px-6 md:px-16 lg:px-28">
         <div class="section-header mb-14 reveal">
             <p class="eyebrow-line">Selected Works</p>
             <h2 class="section-title"><span class="shimmer-underline">Featured Projects</span></h2>
@@ -922,15 +1281,101 @@
                 <div class="empty-project-icon w-16 h-16 rounded-2xl bg-white/[0.03] border border-white/[0.06] flex items-center justify-center mb-2">
                     <svg class="w-7 h-7 text-white/20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
                 </div>
-                <p class="empty-project-txt text-white/25 text-sm font-light">Belum ada project yang ditambahkan.</p>
-                <p class="empty-project-sub text-white/15 text-xs">Coming soon...</p>
+                <p class="empty-project-txt text-white/25 text-sm font-light">The showcase is being curated.</p>
+                <p class="empty-project-sub text-white/15 text-xs">Real builds, real problems, real lessons — coming next.</p>
             </div>
             @endforelse
         </div>
     </section>
 
+    {{-- ═══════════ HOW I WORK SECTION ═══════════ --}}
+    <section id="how-i-work" class="section-anchor relative z-10 py-22 px-6 md:px-16 lg:px-28">
+        <div class="section-header mb-14 reveal">
+            <p class="eyebrow-line">How I Work</p>
+            <h2 class="section-title"><span class="shimmer-underline">Build. Debug. Improve.</span></h2>
+            <p class="mt-5 max-w-2xl text-center text-sm md:text-base text-white/35 leading-relaxed">
+                My workflow is iterative: understand first, explore the options, build the right thing, then make it better.
+            </p>
+        </div>
+
+        <div class="process-wrap">
+            <div class="process-line hidden md:block"></div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+                <article class="process-card reveal-left">
+                    <div class="flex items-center justify-between mb-7"><span class="process-dot">01</span><span class="text-[0.65rem] uppercase tracking-[0.16em] text-white/20">Start</span></div>
+                    <h3 class="text-lg font-bold text-white mb-2">Understand</h3>
+                    <p class="text-sm text-white/35 leading-relaxed">Start with the problem before choosing the stack.</p>
+                </article>
+                <article class="process-card reveal">
+                    <div class="flex items-center justify-between mb-7"><span class="process-dot">02</span><span class="text-[0.65rem] uppercase tracking-[0.16em] text-white/20">Explore</span></div>
+                    <h3 class="text-lg font-bold text-white mb-2">Explore</h3>
+                    <p class="text-sm text-white/35 leading-relaxed">Research, compare, prototype, and learn.</p>
+                </article>
+                <article class="process-card reveal">
+                    <div class="flex items-center justify-between mb-7"><span class="process-dot">03</span><span class="text-[0.65rem] uppercase tracking-[0.16em] text-white/20">Create</span></div>
+                    <h3 class="text-lg font-bold text-white mb-2">Build</h3>
+                    <p class="text-sm text-white/35 leading-relaxed">Turn the idea into something usable.</p>
+                </article>
+                <article class="process-card reveal">
+                    <div class="flex items-center justify-between mb-7"><span class="process-dot">04</span><span class="text-[0.65rem] uppercase tracking-[0.16em] text-white/20">Learn</span></div>
+                    <h3 class="text-lg font-bold text-white mb-2">Debug</h3>
+                    <p class="text-sm text-white/35 leading-relaxed">Investigate what breaks and understand why.</p>
+                </article>
+                <article class="process-card reveal-right">
+                    <div class="flex items-center justify-between mb-7"><span class="process-dot">05</span><span class="text-[0.65rem] uppercase tracking-[0.16em] text-white/20">Ship</span></div>
+                    <h3 class="text-lg font-bold text-white mb-2">Ship</h3>
+                    <p class="text-sm text-white/35 leading-relaxed">Polish the details and make it real.</p>
+                </article>
+            </div>
+        </div>
+
+        <div class="reveal mt-5 rounded-2xl border border-white/[0.06] bg-white/[0.018] px-6 py-6 md:px-8">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <p class="text-sm md:text-base text-white/55 leading-relaxed max-w-3xl">
+                    <span class="text-white/85 font-semibold">AI is part of the workflow — not a replacement for thinking.</span>
+                    I use it to move faster, ask better questions, and explore more possibilities while keeping judgment, direction, and final decisions human.
+                </p>
+                <span class="shrink-0 inline-flex items-center gap-2 text-[0.68rem] uppercase tracking-[0.18em] text-emerald-400 border border-emerald-500/15 bg-emerald-500/[0.05] rounded-full px-3.5 py-2">
+                    Human in the loop
+                </span>
+            </div>
+        </div>
+    </section>
+
+    {{-- ═══════════ CURRENTLY EXPLORING SECTION ═══════════ --}}
+    <section id="exploring" class="section-anchor relative z-10 py-22 px-6 md:px-16 lg:px-28">
+        <div class="section-header mb-12 reveal">
+            <p class="eyebrow-line">Currently Exploring</p>
+            <h2 class="section-title"><span class="shimmer-underline">Next, Not Done</span></h2>
+            <p class="mt-5 max-w-2xl text-center text-sm md:text-base text-white/35 leading-relaxed">
+                The direction keeps evolving. The habit stays the same: learn, build, reflect, repeat.
+            </p>
+        </div>
+
+        <div class="explore-panel reveal-scale max-w-5xl mx-auto p-7 md:p-10">
+            <div class="relative z-10 grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-8 lg:gap-12 items-center">
+                <div>
+                    <div class="flex items-center gap-2 text-[0.68rem] uppercase tracking-[0.2em] text-emerald-400 mb-4">
+                        <span class="dot-pulse !w-2 !h-2"></span>
+                        In progress
+                    </div>
+                    <h3 class="text-2xl md:text-3xl font-bold text-white tracking-tight mb-4">Curiosity is still part of the plan.</h3>
+                    <p class="text-sm md:text-base text-white/40 leading-relaxed max-w-xl">
+                        I’m exploring better ways to build products, work with AI, grow technically, and turn the things I learn into opportunities that are actually useful in the real world.
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap gap-2.5 lg:justify-end">
+                    @foreach(['AI-assisted development','AI training & data work','Full-stack architecture','Better UI/UX','Freelance opportunities','Products people actually use'] as $item)
+                        <span class="explore-chip">{{ $item }}</span>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </section>
+
     {{-- ═══════════ CONTACT SECTION ═══════════ --}}
-    <section id="contact" class="relative z-10 py-22 px-6 md:px-16 lg:px-28">
+    <section id="contact" class="section-anchor relative z-10 py-22 px-6 md:px-16 lg:px-28">
         <div class="section-header mb-16 reveal">
             <p class="eyebrow-line">Contact</p>
             <h2 class="section-title"><span class="shimmer-underline">Let's Talk</span></h2>
@@ -942,9 +1387,9 @@
             <div class="lg:col-span-2 flex flex-col justify-between">
                 {{-- reveal-left: elemen muncul dari sisi kiri saat di-scroll --}}
                 <div class="reveal-left">
-                    <h3 class="text-[clamp(1.5rem,3.5vw,2.4rem)] font-extrabold tracking-tight text-white leading-tight mb-6">Let's Work<br/>Together</h3>
+                    <h3 class="text-[clamp(1.5rem,3.5vw,2.4rem)] font-extrabold tracking-tight text-white leading-tight mb-6">Have something<br/>worth building?</h3>
                     <p class="text-sm text-white/40 leading-relaxed font-light mb-10 max-w-sm">
-                        Saya selalu terbuka untuk diskusi proyek baru, ide kreatif, atau kesempatan kolaborasi.
+                        I'm open to thoughtful projects, collaborations, and conversations about technology, design, and new ideas.
                     </p>
                 </div>
                 {{-- contact-stagger: tiap item kontak muncul bergantian dari kiri --}}
@@ -1027,7 +1472,7 @@
             <div class="flex flex-col items-center md:items-start gap-1">
                 <p class="text-xs text-white/30 font-light">&copy; 2026 Putra<span class="text-emerald-500/60">Dev</span>. All rights reserved.</p>
                 <p class="text-[0.65rem] text-white/15 font-light flex items-center gap-1.5">
-                    Handcrafted by Muhammad Putra
+                    Built with curiosity by Muhammad Putra
                     <svg class="w-2.5 h-2.5 text-emerald-500/50" viewBox="0 0 12 12" fill="currentColor"><path d="M6 1.5C4 1.5 2.5 3 2.5 5c0 3.5 3.5 5.5 3.5 5.5s3.5-2 3.5-5.5C9.5 3 8 1.5 6 1.5z"/></svg>
                 </p>
             </div>
@@ -1114,28 +1559,28 @@
                     { key: 'frontend', label: 'Frontend'  },
                     { key: 'backend',  label: 'Backend'   },
                     { key: 'tools',    label: 'Tools'     },
-                    { key: 'ai-team',  label: 'Teamwork'  }
+                    { key: 'ai-team',  label: 'AI Workflow'  }
                 ],
                 skills: [
                     /* Setiap skill memiliki: name, img (URL CDN), level, cat (kategori), dan iconClass opsional */
-                    { name: 'HTML',         img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg',             level: 'Advanced',     cat: 'frontend' },
-                    { name: 'CSS',          img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg',               level: 'Advanced',     cat: 'frontend' },
-                    { name: 'JavaScript',   img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',   level: 'Advanced',     cat: 'frontend' },
-                    { name: 'Tailwind CSS', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg', level: 'Advanced',     cat: 'frontend' },
-                    { name: 'Bootstrap',    img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg',     level: 'Intermediate', cat: 'frontend' },
-                    { name: 'Alpine.js',    img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/alpinejs/alpinejs-original.svg',       level: 'Intermediate', cat: 'frontend' },
-                    { name: 'PHP',          img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg',                 level: 'Advanced',     cat: 'backend'  },
-                    { name: 'Laravel',      img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg',         level: 'Advanced',     cat: 'backend'  },
-                    { name: 'MySQL',        img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',             level: 'Advanced',     cat: 'backend'  },
-                    { name: 'Node.js',      img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',           level: 'Intermediate', cat: 'backend'  },
-                    { name: 'Vite',         img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg',           level: 'Intermediate', cat: 'tools'    },
-                    { name: 'Figma',        img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg',             level: 'Advanced',     cat: 'tools'    },
-                    { name: 'GitHub',       img: 'https://unpkg.com/@lobehub/icons-static-svg@latest/icons/github.svg',                    level: 'Advanced',     cat: 'tools',    iconClass: 'icon-dark-bg' },
-                    { name: 'VS Code',      img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg',           level: 'Advanced',     cat: 'tools'    },
-                    { name: 'Z.ai (Open Source)',  img: 'https://unpkg.com/@lobehub/icons-static-svg@latest/icons/zhipu-color.svg',        level: 'GLM-5-Turbo',  cat: 'ai-team'  },
-                    { name: 'Gemini',       img: 'https://unpkg.com/@lobehub/icons-static-svg@latest/icons/gemini-color.svg',              level: 'Pro 1.5',      cat: 'ai-team'  },
-                    { name: 'Claude',       img: 'https://unpkg.com/@lobehub/icons-static-svg@latest/icons/claude-color.svg',              level: 'Sonnet',       cat: 'ai-team',  iconClass: 'icon-light-bg' },
-                    { name: 'GPT',          img: 'https://unpkg.com/@lobehub/icons-static-svg@latest/icons/openai.svg',                    level: '4o',           cat: 'ai-team',  iconClass: 'icon-dark-bg' },
+                    { name: 'HTML',         img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg',             level: 'Core',      cat: 'frontend' },
+                    { name: 'CSS',          img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg',               level: 'Core',      cat: 'frontend' },
+                    { name: 'JavaScript',   img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',   level: 'Core',      cat: 'frontend' },
+                    { name: 'Tailwind CSS', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg', level: 'Core',      cat: 'frontend' },
+                    { name: 'Bootstrap',    img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg',     level: 'Working',   cat: 'frontend' },
+                    { name: 'Alpine.js',    img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/alpinejs/alpinejs-original.svg',       level: 'Working',   cat: 'frontend' },
+                    { name: 'PHP',          img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg',                 level: 'Core',      cat: 'backend'  },
+                    { name: 'Laravel',      img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg',         level: 'Core',      cat: 'backend'  },
+                    { name: 'MySQL',        img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',             level: 'Core',      cat: 'backend'  },
+                    { name: 'Node.js',      img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',           level: 'Working',   cat: 'backend'  },
+                    { name: 'Vite',         img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg',           level: 'Working',   cat: 'tools'    },
+                    { name: 'Figma',        img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg',             level: 'Core',      cat: 'tools'    },
+                    { name: 'GitHub',       img: 'https://unpkg.com/@lobehub/icons-static-svg@latest/icons/github.svg',                    level: 'Core',      cat: 'tools',    iconClass: 'icon-dark-bg' },
+                    { name: 'VS Code',      img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg',           level: 'Core',      cat: 'tools'    },
+                    { name: 'Z.ai',         img: 'https://unpkg.com/@lobehub/icons-static-svg@latest/icons/zhipu-color.svg',                level: 'Workflow',  cat: 'ai-team'  },
+                    { name: 'Gemini',       img: 'https://unpkg.com/@lobehub/icons-static-svg@latest/icons/gemini-color.svg',              level: 'Workflow',  cat: 'ai-team'  },
+                    { name: 'Claude',       img: 'https://unpkg.com/@lobehub/icons-static-svg@latest/icons/claude-color.svg',              level: 'Workflow',  cat: 'ai-team',  iconClass: 'icon-light-bg' },
+                    { name: 'GPT',          img: 'https://unpkg.com/@lobehub/icons-static-svg@latest/icons/openai.svg',                    level: 'Workflow',  cat: 'ai-team',  iconClass: 'icon-dark-bg' },
                 ],
                 /* Computed property: dihitung ulang otomatis setiap activeTab berubah */
                 get filtered() {
